@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.22.0/dist/full.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app" class="flex flex-col min-h-screen">
+    <header class="bg-gray-800 text-white p-4">
+      <h1 class="text-2xl font-bold">ESign Downloader</h1>
+    </header>
+    <div class="flex flex-1">
+      <aside class="w-64 bg-gray-200 p-4">
+        <button v-for="(buttonText, index) in buttonTexts" 
+                :key="index" 
+                class="bg-blue-200 hover:bg-blue-300 text-blue-800 font-bold py-2 px-4 rounded mb-2 w-full" 
+                @click="buttonClick(buttonLinks[index])"
+                v-model="buttonText">
+           {{ buttonText }}
+        </button>
+      </aside>
+      <main class="flex-1 p-4">
+        <h2>{{ message }}</h2>
+      </main>
+    </div>
+    <footer class="bg-gray-800 text-white p-4">
+      <a v-bind:href="installDnsLink" target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+        Install DNS Profile
+      </a>
+      <a v-bind:href="downloadEsignLink" target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Download ESign Certs
+      </a>
+    </footer>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'Welcome to ESign Downloader, User!',
+        buttonTexts: ['ESign Cert Vietnam Posts and Telecommunications Group - Ho Chi Minh City Telecom Branch', ' ESign Cert IT & Telecommunications Solution Center - Viettle', 'ESign Cert Vietnam Technological and Commercial Joint - Stock Band', 'ESign Cert ChinaContinent', 'ESign Cert ANBANG INSURANCE', 'ESign Cert Bank of Chongqing', 'ESign Cert China CITIC', 'ESign Cert HDFC Life', 'ESign Cert Henan Provincial', 'ESign Cert Sunshine', 'ESign Cert Sunshine 1', 'ESign Cert Sunshine 2'],
+        buttonLinks: ['https://api.khoindvn.eu.org/pJmrRw', 'https://api.khoindvn.eu.org/i8ZINf', 'https://api.khoindvn.eu.org/qKnJ4U', 'https://api.khoindvn.eu.org/ushYDG', 'https://api.khoindvn.eu.org/fK34ZN', 'https://api.khoindvn.eu.org/S3pESj', 'https://api.khoindvn.eu.org/GqtMdU', 'https://api.khoindvn.eu.org/JdI495', 'https://api.khoindvn.eu.org/aJJPlE', 'https://api.khoindvn.eu.org/PYdXWo', 'https://api.khoindvn.eu.org/EHXoPK', 'https://api.khoindvn.eu.org/w3YH8U'],
+        installDnsLink: 'https://khoindvn.io.vn/document/DNS/khoindns.mobileconfig?sign=1',
+        downloadEsignLink: 'https://khoindvn.io.vn/document/DNS/Esign-Certs.zip'
+      },
+      methods: {
+        buttonClick(link) {
+          window.open(link, '_blank'); 
+        }
+      }
+    });
+  </script>
+</body>
+</html> 
